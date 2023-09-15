@@ -35,7 +35,7 @@ function DetailRecipe() {
           </div>
           <div className="image row">
             <div className="col-xl-12 d-grid justify-content-center ">
-              <img src={require("../../asset/image/detailrcp.png")} alt="" />
+              <img src={data.image} alt="" />
             </div>
           </div>
         </div>
@@ -63,7 +63,6 @@ function DetailRecipe() {
                   height="93.012px"
                   src={data.video}
                   title="YouTube video player"
-                  frameBorder={0}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen=""
                 />
@@ -76,7 +75,6 @@ function DetailRecipe() {
                   height="93.012px"
                   src="https://www.youtube.com/embed/aevmFRd8Bzw?si=HbvuN5R8eHHfO7dP"
                   title="YouTube video player"
-                  frameBorder={0}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen=""
                 />
@@ -89,7 +87,6 @@ function DetailRecipe() {
                   height="93.012px"
                   src="https://www.youtube.com/embed/J9ruUKaBBsY?si=NzqMOG8K3a3MqDAC"
                   title="YouTube video player"
-                  frameBorder={0}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen=""
                 />

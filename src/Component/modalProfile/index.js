@@ -63,9 +63,8 @@ function ModalProfile() {
           <Modal.Title>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>
-            <Form.Control type="file" onChange={handleUpload} name="image" />
-          </div>
+          <Form.Control type="file" onChange={handleUpload} name="image" />
+
           <Form.Control
             type="text"
             placeholder="username"

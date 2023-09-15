@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { url } from '../../Component/login/login';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function Register() {
@@ -28,7 +30,8 @@ function Register() {
        
 
       navigate("/login")
-      return res("register successfully")
+      console.log(res)
+      toast.success("input recipe successfully");
     } catch (err) {
       if (err){
         setErrmsg(err.response.data.message);

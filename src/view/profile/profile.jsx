@@ -59,7 +59,7 @@ function Profile() {
       <div>
         <Navbar />
       </div>
-      <section id="profile" style={{ paddingBottom: 127 }}>
+      <section id="profile" style={{ minHeight:"90vh" }}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg d-flex  flex-column align-items-center">
@@ -99,9 +99,7 @@ function Profile() {
 
                   <ul className="dropdown-menu">
                     <li>
-                      <Link className="dropdown-item" to="#">
                         <ModalProfile/>
-                      </Link>
                     </li>
                     <li>
                       <Link className="dropdown-item" to="#">
@@ -117,12 +115,12 @@ function Profile() {
         </div>
         <div className="container">
           <Tabs
-            defaultActiveKey="home"
+            defaultActiveKey="MyRecipe"
             transition={false}
             id="noanim-tab-example"
             className="mb-3"
           >
-            <Tab eventKey="home" title="Home" style={{ height: "auto" }}>
+            <Tab eventKey="MyRecipe" title="MyRecipe" style={{ height: "auto" }}>
               <div className="container">
                 <div className="row row-cols-1 row-cols-md-3 g-4 ">
                   {recipes.map((item) => (
@@ -142,7 +140,7 @@ function Profile() {
                           }}
                         />
                         <div className="card-img-overlay">
-                          <h5 className="card-title position-absolute bottom-0">
+                          <h5 className="card-title position-absolute bottom-0" style={{color:"#fff", fontFamily:"Airbnb Cereal App",fontSize:28,textTransform:"capitalize"}}>
                             {item.name_recipes}
                           </h5>
                        <ModalUpdate item={item} recipeId={item.recipes_id}/>
@@ -160,7 +158,7 @@ function Profile() {
                 </div>
               </div>
             </Tab>
-            <Tab eventKey="profile" title="Profile">
+            <Tab eventKey="Saved Recipe" title="Saved Recipe">
               <div className="container">
                 <div className="row row-cols-1 row-cols-md-3 g-4 ">
                   {recipes.map((item) => (
@@ -190,7 +188,7 @@ function Profile() {
                 </div>
               </div>
             </Tab>
-            <Tab eventKey="contact" title="Contact">
+            <Tab eventKey="Liked Recipe" title="Liked Recipe">
               <div className="container">
                 <div className="row row-cols-1 row-cols-md-3 g-4 ">
                   {recipes.map((item) => (

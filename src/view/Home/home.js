@@ -17,7 +17,7 @@ const Home = () => {
       .then((res) => {
         SetData(res.data.data);
 
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +53,7 @@ const Home = () => {
                   <datalist id="datalistOptions"></datalist>
                 </div>
               </div>
-              <div className="col-lg-7  col-md-12">
+              <div className="col-lg-6  col-md-12">
                 <img
                   src={require("../../asset/image/Rectangle 313.png")}
                   alt=""
@@ -72,7 +72,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="container-fluid my-5">
+        <div className="container-fluid my-5 mx-auto ">
           <div className="row align-items-center">
             <div className=" col-md-12 col-lg-5 offset-lg-1">
               <img
@@ -136,22 +136,31 @@ const Home = () => {
         </div>
         <div className="container-fluid">
           <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 g-4 ">
+            <div className="row">
               {data.map((item) => (
-                <div className="col" key={item.recipes_id}>
+                <div className="col">
                   <div
-                    className="card "
-                    style={{ width: 400, height: 400 }}
+                    className="card my-2"
+                    // style={{ width: 400, height: 400 }}
                     onClick={() => handleRecipeClick(item.recipes_id)}
                   >
                     <img
                       src={item.image}
                       className="card-img "
+                      id="cardimg"
                       alt="..."
-                      style={{ width: 400, height: 400, objectFit: "cover" }}
+                      // style={{ width: 400, height: 400, objectFit: "cover" }}
                     />
                     <div className="card-img-overlay">
-                      <h5 className="card-title position-absolute bottom-0">
+                      <h5
+                        className="card-title position-absolute bottom-0"
+                        style={{
+                          color: "#3F3A3A",
+                          fontFamily: "Airbnb Cereal App",
+                          fontSize: 32,
+                          textTransform: "capitalize",
+                        }}
+                      >
                         {item.name_recipes}
                       </h5>
                     </div>

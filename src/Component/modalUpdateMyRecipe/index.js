@@ -32,7 +32,7 @@ function ModalUpdate(item) {
   const handleUpload = (e) => {
     const uploader = e.target.files[0];
     setSaveImage(uploader);
-    // console.log(uploader);
+    console.log(uploader);
   };
 
   const handleSubmit = async (event) => {
@@ -52,7 +52,7 @@ function ModalUpdate(item) {
       console.log(response, "sucessfully");
       toast.success("input recipe successfully");
     } catch (error) {
-      console.log("Error creating product:", error);
+      console.log("Error update recipe:", error);
     }
   };
   return (

@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../Component/Navbar/navbar";
 import Footer from "../../Component/footer/footer";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { url } from "../../Component/login/login";
+import NavbarHome from "../../Component/NavbarHome/navbarHome";
 
 function DetailRecipe() {
   const [data, SetData] = useState([]);
-  const { id } = useParams();
-  console.log(id);
+  const { recipes_id } = useParams();
+  const navigate = useNavigate()
+  console.log(recipes_id);
 
   useEffect(() => {
     axios
-      .get(`${url}/recipe/${id}`)
+      .get(`${url}/recipe/${recipes_id}`)
 
       .then((res) => {
         SetData(res.data.data[0]);
-        // console.log(res.data.data[0]);
+        console.log(res.data.data[0]);
       })
       .catch((err) => {
-        return(err);
+        return (err);
       });
-  }, []);
-  
+  }, [recipes_id]);
+
+  const handleRecipeClick = (recipes_id) => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/detailVideo/${recipes_id}`);
+    }
+  };
+
   return (
     <>
       <div>
@@ -57,39 +67,25 @@ function DetailRecipe() {
               <div className="col-xl-12">
                 <h2>Video Step</h2>
               </div>
+              <div className="col-xl-12" onClick={(()=>{handleRecipeClick(recipes_id)})} >
+                <div style={{backgroundColor:"#EFC81A", width:"411.27px",height:"93.01px",borderRadius:"15px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <i class="bi bi-play" style={{color:"white",fontSize:34.96}}></i>
+                </div>
+              </div>
+              
+            </div>
+            <div className="row" style={{ marginBottom: "2.9069rem" }} onClick={(()=>{handleRecipeClick(recipes_id)})}>
               <div className="col-xl-12">
-                <iframe
-                  width="411.269px"
-                  height="93.012px"
-                  src={data.video}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen=""
-                />
+              <div style={{backgroundColor:"#EFC81A", width:"411.27px",height:"93.01px",borderRadius:"15px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <i class="bi bi-play" style={{color:"white",fontSize:34.96}}></i>
+                </div>
               </div>
             </div>
-            <div className="row" style={{ marginBottom: "2.9069rem" }}>
+            <div className="row" style={{ marginBottom: "2.9069rem" }} onClick={(()=>{handleRecipeClick(recipes_id)})}>
               <div className="col-xl-12">
-                <iframe
-                  width="411.269px"
-                  height="93.012px"
-                  src="https://www.youtube.com/embed/aevmFRd8Bzw?si=HbvuN5R8eHHfO7dP"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen=""
-                />
-              </div>
-            </div>
-            <div className="row" style={{ marginBottom: "2.9069rem" }}>
-              <div className="col-xl-12">
-                <iframe
-                  width="411.269px"
-                  height="93.012px"
-                  src="https://www.youtube.com/embed/J9ruUKaBBsY?si=NzqMOG8K3a3MqDAC"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen=""
-                />
+              <div style={{backgroundColor:"#EFC81A", width:"411.27px",height:"93.01px",borderRadius:"15px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <i class="bi bi-play" style={{color:"white",fontSize:34.96}}></i>
+                </div>
               </div>
             </div>
           </div>

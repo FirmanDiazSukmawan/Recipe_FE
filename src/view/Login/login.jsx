@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../../asset/css/style.css"
 import {login, url} from "../../Component/login/login"
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Toast } from 'bootstrap';
 
 function Login(){
     const [email, setEmail] = useState("");
@@ -29,7 +32,9 @@ function Login(){
         localStorage.setItem("token",res.data.token);
         localStorage.setItem("email",res.data.data.email);
         localStorage.setItem("userId",res.data.data.users_id);
-        navigate("/");
+        toast.success("Login succces bro")
+        navigate("/")
+        
          
         console.log(res)
       } catch (err) {
@@ -76,6 +81,8 @@ function Login(){
    
 
     return (
+        <>
+        <ToastContainer/>
         <section className="container-fluid" id='login'>
             <div className="login-base row align-items-center position-relative">
                 <div className="login-left d-none  d-lg-grid col-lg-6 ">
@@ -159,7 +166,7 @@ function Login(){
                 </div>
             </div>
         </section>
-
+        </>
     )
 }
 

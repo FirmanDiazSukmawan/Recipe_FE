@@ -6,6 +6,7 @@ import axios from "axios";
 import { url } from "../../Component/login/login";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavbarHome from "../../Component/NavbarHome/navbarHome";
 
 function AddRecipe() {
   const users_id = localStorage.getItem('userId')
@@ -123,7 +124,7 @@ const handleSubmit = async (event) => {
                 id="tittle"
                 className="form-control"
                 type="text"
-                placeholder="recipe_name"
+                placeholder="tittle"
                 aria-label="form-control-lg example"
                 onChange={handleChange}
                 name="name_recipes"

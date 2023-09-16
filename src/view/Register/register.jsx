@@ -31,7 +31,7 @@ function Register() {
 
       navigate("/login")
       console.log(res)
-      toast.success("input recipe successfully");
+      // toast.success("register success brother");
     } catch (err) {
       if (err){
         setErrmsg(err.response.data.message);
@@ -41,6 +41,7 @@ function Register() {
 
 
     return (
+      <>
         <section className="container-fluid" id='register'>
   <div className="reg-base row align-items-center position-relative">
     <div className="reg-left col-xs-12 col-sm-3 col-md-4 col-lg-6 ">
@@ -150,7 +151,7 @@ function Register() {
     </div>
   </div>
 </section>
-
+</>
     )
 }
 

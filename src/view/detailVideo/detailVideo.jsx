@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Component/Navbar/navbar'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { url } from '../../Component/login/login'
+import NavbarHome from '../../Component/NavbarHome/navbarHome'
 
-function detailVideo() {
+function DetailVideo() {
+const {recipes_id} = useParams()
+const [video,setVideo] = useState()
+const [name_recipes,setName_recipes] = useState()
+const [created_at,setCreated_at] = useState()
+
+useEffect(()=>{
+  axios.get(`${url}/recipe/${recipes_id}`)
+  .then((res)=>{
+    // const {video,} = res.data.data[0]
+    setVideo(res.data.data[0].video)
+    setName_recipes(res.data.data[0].name_recipes)
+    setCreated_at(res.data.data[0].created_at)
+    console.log(res.data.data[0])
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+},[recipes_id])
+
+
+// console.log(recipes_id)
+
+
+
   return (
     <>
     <div>
@@ -11,12 +39,20 @@ function detailVideo() {
     <div className="container-fluid">
       <div className="row">
         <div className="vidleft col-xxl-8 offset-lg-1 col-md-12  ">
-          <img src={require("../../asset/image/Rectangle 329.png")} alt="" />
+        <div className="col-xl-12">
+                <iframe
+                  width="1120px"
+                  height="620px"
+                  src={video}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen=""
+                />
+              </div>
           <h1 className="h1">
-            Beef Steak with Curry Sauce - [Step 4] Cut the condiment and then
-            mix it
+           {name_recipes}
           </h1>
-          <p>3 month ago</p>
+          <p>{created_at}</p>
         </div>
         <div className="vidright col-xxl-3 col-md-12 d-flex flex-column align-items-center  ">
           <h1 className="h2">Next</h1>
@@ -53,4 +89,4 @@ function detailVideo() {
   )
 }
 
-export default detailVideo
+export default DetailVideo

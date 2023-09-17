@@ -55,6 +55,7 @@ const handleSubmit = async (event) => {
     );
   } catch (error) {
     console.log("Error creating product:", error);
+    toast.error("input recipe failed")
   }
 };
 

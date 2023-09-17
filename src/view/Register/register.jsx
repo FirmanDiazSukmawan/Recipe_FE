@@ -30,11 +30,13 @@ function Register() {
        
 
       navigate("/login")
+      toast.success("create account successfully")
       console.log(res)
-      // toast.success("register success brother");
+      toast.success("register success brother");
     } catch (err) {
       if (err){
         setErrmsg(err.response.data.message);
+        toast.error(errmsg)
       }
     }
   }
@@ -42,6 +44,7 @@ function Register() {
 
     return (
       <>
+      <ToastContainer/>
         <section className="container-fluid" id='register'>
   <div className="reg-base row align-items-center position-relative">
     <div className="reg-left col-xs-12 col-sm-3 col-md-4 col-lg-6 ">
@@ -55,7 +58,7 @@ function Register() {
     </div>
     <div className="reg-right col-xs-12 col-sm-9 col-md-8 col-lg-6">
       <div className="regr d-flex flex-column justify-content-center align-items-center h-100">
-        <p className='has-text-centered'>{errmsg}</p>
+        {/* <p className='has-text-centered'>{errmsg}</p> */}
         <div className="rlg">
           <div className="lets d-flex flex-column align-items-center">
             <h2 className="letsg text-warning">Let’s Get Started !</h2>

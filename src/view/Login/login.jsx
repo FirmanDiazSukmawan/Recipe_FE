@@ -40,6 +40,7 @@ function Login(){
       } catch (err) {
         if (err){
           setErrmsg(err.response.data.message);
+          toast.error(errmsg)
         }
       }
     }
@@ -100,7 +101,7 @@ function Login(){
                         style={{ height: "100%", width: "100%" }}
                     >
                         <div className="rlg">
-                         <p className="text-center">{errmsg}</p>
+                         {/* <p className="text-center">{errmsg}</p> */}
                             <div className="welcome d-flex flex-column align-items-center">
                                 <div className="welcome text-warning">Welcome</div>
                                 <div className="title mt-3 mb-3">

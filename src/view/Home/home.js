@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 // import Button from "../../Component/Button";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import NavbarHome from "../../Component/NavbarHome/navbarHome";
 import Footer from "../../Component/footer/footer";
 import { url } from "../../Component/login/login";
+import { Pagination } from "react-bootstrap";
+import NavbarLogin from "../../Component/Navbar/navbarLogin";
+import NavbarHome from "../../Component/NavbarHome/navbarHome";
 
 const Home = () => {
   const [data, SetData] = useState([]);
   const navigate = useNavigate();
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const RecipePerPage = 6;
   useEffect(() => {
     axios
       .get(`${url}/recipe`)
@@ -32,11 +35,21 @@ const Home = () => {
     }
   };
 
+  const indexOfLastRecipe = currentPage * RecipePerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - RecipePerPage;
+  const currentRecipe = data.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const login = localStorage.getItem("token");
+
   return (
     <>
-      <div className="mt-5 ms-5">
-        <NavbarHome />
-      </div>
+      {!login ? <NavbarLogin /> : <NavbarHome />}
+      {/* <navbarLogin /> */}
+
       <section id="Home">
         <div className="container-fluid my-5">
           <div className="container">
@@ -137,7 +150,7 @@ const Home = () => {
         <div className="container-fluid">
           <div className="container">
             <div className="row">
-              {data.map((item) => (
+              {currentRecipe.map((item) => (
                 <div className="col">
                   <div
                     className="card my-2"
@@ -167,6 +180,21 @@ const Home = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="d-flex justify-content-center mt-3">
+              <Pagination>
+                {Array.from({
+                  length: Math.ceil(data.length / RecipePerPage),
+                }).map((_, index) => (
+                  <Pagination.Item
+                    key={index}
+                    active={index + 1 === currentPage}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </Pagination.Item>
+                ))}
+              </Pagination>
             </div>
           </div>
         </div>

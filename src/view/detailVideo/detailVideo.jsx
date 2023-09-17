@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../../Component/Navbar/navbar'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { url } from '../../Component/login/login'
@@ -33,7 +32,7 @@ useEffect(()=>{
   return (
     <>
     <div>
-    <Navbar/>
+    <NavbarHome/>
   </div>
   <section id='detailVideo'>
     <div className="container-fluid">

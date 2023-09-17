@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../../Component/Navbar/navbar";
 import Footer from "../../Component/footer/footer";
 import axios from "axios";
 import { url } from "../../Component/login/login";
@@ -65,7 +64,7 @@ const handleSubmit = async (event) => {
     <>
     <ToastContainer/>
       <div>
-        <Navbar />
+        <NavbarHome />
       </div>
       <section id="addRecipe">
         <div className="container-fluid">

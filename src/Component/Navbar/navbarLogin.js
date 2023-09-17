@@ -2,12 +2,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function NavbarHome() {
+function NavbarLogin() {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogin = () => {
     localStorage.clear();
-    navigate("/home");
+    navigate("/login");
   };
   return (
     <header id="navbarHome">
@@ -48,20 +48,15 @@ function NavbarHome() {
                 </Link>
               </div>
 
-              <div
-                className="logout"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Link className="nav-link" to="/profile">
-                  <i class="bi bi-person-fill" style={{ fontSize: 52 }}></i>
-                </Link>
+              <div className="Login">
                 <Link className="nav-link" to="/login">
+                  <i class="bi bi-person-fill" style={{ fontSize: 52 }}></i>
                   <button
-                    onClick={handleLogout}
+                    onClick={handleLogin}
                     className="btn"
                     style={{ marginLeft: "0.5em" }}
                   >
-                    Logout
+                    Login
                   </button>
                 </Link>
               </div>
@@ -73,4 +68,4 @@ function NavbarHome() {
   );
 }
 
-export default NavbarHome;
+export default NavbarLogin;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../Component/Navbar/navbar";
 import Footer from "../../Component/footer/footer";
 import { url } from "../../Component/login/login";
 import axios from "axios";
@@ -10,10 +9,14 @@ import Tabs from "react-bootstrap/Tabs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ModalUpdate from "../../Component/modalUpdateMyRecipe";
+import { Pagination } from "react-bootstrap";
+import NavbarHome from "../../Component/NavbarHome/navbarHome";
 
 function Profile() {
-  let [users, setUsers] = useState([]);
-  let [recipes, setRecipes] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [currentPage,setCurrentPage] = useState(1);
+  const recipePerPage = 6;
   // console.log(users.image);
   const getId = localStorage.getItem("userId");
   // console.log(getId);
@@ -53,11 +56,19 @@ function Profile() {
       });
   };
 
+  const indexOfLastRecipe = currentPage * recipePerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipePerPage;
+  const currentRecipe = recipes.slice(indexOfFirstRecipe,indexOfLastRecipe);
+
+  const handlePageChage = (PageNumber) => {
+    setCurrentPage(PageNumber);
+  }
+
   return (
     <>
     <ToastContainer/>
       <div>
-        <Navbar />
+        <NavbarHome />
       </div>
       <section id="profile" style={{ minHeight:"90vh" }}>
       <div className="container-fluid">
@@ -81,7 +92,7 @@ function Profile() {
             <Tab eventKey="MyRecipe" title="MyRecipe" style={{ height: "auto" }}>
               <div className="container">
                 <div className="row row-cols-1 row-cols-md-3 g-4 ">
-                  {recipes.map((item) => (
+                  {currentRecipe.map((item) => (
                     <div className="col" key={item.recipes_id}>
                       <div
                         className="card "
@@ -114,12 +125,27 @@ function Profile() {
                     </div>
                   ))}
                 </div>
+                <div className="d-flex justify-content-center mt-3">
+              <Pagination>
+                {Array.from({
+                  length: Math.ceil(recipes.length / recipePerPage),
+                }).map((_, index) => (
+                  <Pagination.Item
+                    key={index}
+                    active={index + 1 === currentPage}
+                    onClick={() => handlePageChage(index + 1)}
+                  >
+                    {index + 1}
+                  </Pagination.Item>
+                ))}
+              </Pagination>
+              </div>
               </div>
             </Tab>
             <Tab eventKey="Saved Recipe" title="Saved Recipe">
               <div className="container">
                 <div className="row row-cols-1 row-cols-md-3 g-4 ">
-                  {recipes.map((item) => (
+                  {currentRecipe.map((item) => (
                     <div className="col" key={item.recipes_id}>
                       <div
                         className="card "

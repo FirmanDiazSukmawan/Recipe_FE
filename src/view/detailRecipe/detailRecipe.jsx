@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Component/Navbar/navbar";
 import Footer from "../../Component/footer/footer";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -36,7 +35,7 @@ function DetailRecipe() {
   return (
     <>
       <div>
-        <Navbar />
+        <NavbarHome />
       </div>
       <section id="detailRecipe">
         <div className="container-fluid">

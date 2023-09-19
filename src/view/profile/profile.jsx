@@ -145,7 +145,7 @@ function Profile() {
             <Tab eventKey="Saved Recipe" title="Saved Recipe">
               <div className="container">
                 <div className="row row-cols-1 row-cols-md-3 g-4 ">
-                  {currentRecipe.map((item) => (
+                  {recipes.map((item) => (
                     <div className="col" key={item.recipes_id}>
                       <div
                         className="card "

@@ -18,6 +18,7 @@ function AddRecipe() {
     ingredients:"",
     users_id:users_id,
 });
+const navigate = useNavigate()
 
 const handleChange = (e) => {
  setData({
@@ -58,6 +59,8 @@ const handleSubmit = async (event) => {
     toast.error("input recipe failed")
   }
 };
+
+
 
 
 

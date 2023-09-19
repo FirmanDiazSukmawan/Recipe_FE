@@ -10,15 +10,18 @@ import NavbarHome from "../../Component/NavbarHome/navbarHome";
 
 const Home = () => {
   const [data, SetData] = useState([]);
+  const [search, SetSearch] = useState([]);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const RecipePerPage = 6;
+  // const [text, setText] = useState("");
   useEffect(() => {
     axios
       .get(`${url}/recipe`)
 
       .then((res) => {
         SetData(res.data.data);
+        // setText(res.data.data);
 
         // console.log(res.data.data);
       })
@@ -45,6 +48,10 @@ const Home = () => {
 
   const login = localStorage.getItem("token");
 
+  const handleClick = async (e) => {
+    navigate("/search");
+  };
+
   return (
     <>
       {!login ? <NavbarLogin /> : <NavbarHome />}
@@ -54,23 +61,36 @@ const Home = () => {
         <div className="container-fluid my-5">
           <div className="container">
             <div className="row align-items-center">
-              <div className="col-lg-5 col-md-12 ">
+              <div className="col-lg-6  col-md-12 ">
                 <h1 className="awal">Discover Recipe &amp; Delicious Food</h1>
-                <div className="button-search" style={{ height: 90 }}>
+                <div className="button-search position-relative">
                   <input
-                    className=""
-                    list="datalistOptions"
-                    id="exampleDataList"
-                    placeholder="Type to search..."
+                    className="form-control border-2 bg-body-secondary my-3"
+                    placeholder="Search Restaurant, Food"
+                    style={{
+                      width: "33.5vw",
+                      height: "4.5vh",
+                      paddingLeft: "3vw",
+                    }}
+                    onClick={handleClick}
+                    // value={text}
+                    // onChange={(e) => setText(e.target.value)}
                   />
-                  <datalist id="datalistOptions"></datalist>
+                  <i
+                    className="bi bi-search"
+                    style={{
+                      position: "absolute",
+                      top: "1vh",
+                      paddingLeft: "1vw",
+                    }}
+                  ></i>
                 </div>
               </div>
-              <div className="col-lg-6  col-md-12">
+              <div className="col-lg-5 offset-lg-1  col-md-12">
                 <img
                   src={require("../../asset/image/Rectangle 313.png")}
                   alt=""
-                  className="img-fluid"
+                  className="zero img-fluid"
                 />
               </div>
             </div>
@@ -85,7 +105,31 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="container-fluid my-5 mx-auto ">
+        <div className="container-fluid my-5">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-6  col-md-12 ">
+                <img
+                  src={require("../../asset/image/contoh foto 2.png")}
+                  alt=""
+                  className="first img-fluid"
+                />
+              </div>
+              <div className="col-md-12 col-lg-5 offset-lg-1">
+                <h1 className="h1">Healthy Fried Rice (Quick &amp; Easy)</h1>
+                <p className="p1">
+                  Quick + Easy Fried Rice with Chicken Very yummy
+                </p>
+                <button className="btn btn-warning">
+                  {" "}
+                  <Link to="#">Learn More</Link>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="container-fluid my-5 mx-auto ">
           <div className="row align-items-center">
             <div className=" col-md-12 col-lg-5 offset-lg-1">
               <img
@@ -105,7 +149,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="container-fluid my-5">
           <div className="container">
             <div className="row">
@@ -115,7 +159,34 @@ const Home = () => {
             </div>
           </div>
         </div>
+
         <div className="container-fluid my-5">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-6  col-md-12 ">
+                <img
+                  src={require("../../asset/image/contoh foto 3.png")}
+                  alt=""
+                  className="second img-fluid"
+                />
+              </div>
+              <div className="col-md-12 col-lg-5 offset-lg-1">
+                <h1 className="h1">
+                  Healthy Bone Broth Ramen (Quick &amp; Easy)
+                </h1>
+                <p className="p1">
+                  Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen
+                  in a hurry? That’s right!
+                </p>
+                <button className="btn btn-warning">
+                  <Link to="detailVideo">Learn More</Link>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="container-fluid my-5">
           <div className="row align-items-center">
             <div className="col-md-12 col-lg-5 offset-lg-1">
               <img
@@ -137,7 +208,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="container-fluid my-5">
           <div className="container">
             <div className="row">

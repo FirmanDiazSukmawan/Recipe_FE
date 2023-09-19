@@ -11,7 +11,7 @@ function NavbarHome() {
   };
   return (
     <header id="navbarHome">
-      <nav className="navbar navbar-expand-lg bg-transparent d-flex my-5">
+      <nav className="navbar navbar-expand-lg bg-transparent d-flex">
         <div className="container-fluid">
           <div className=" container d-flex flex-row ml-">
             <button
@@ -27,19 +27,19 @@ function NavbarHome() {
               className="collapse navbar-collapse justify-content-between"
               id="navbarNavAltMarkup"
             >
-              <div className="navbar-nav">
+              <div className="navhome navbar-nav">
                 <Link
-                  className="nav nav-link"
+                  className="navhome nav nav-link"
                   aria-current="page"
                   to="/"
-                  style={{ marginLeft: "-5em", marginRight: "5em" }}
+                  // style={{ marginLeft: "-5em", marginRight: "5em" }}
                 >
                   Home
                 </Link>
                 <Link
-                  className="nav nav-link"
+                  className="navadd nav nav-link"
                   to="/addRecipe"
-                  style={{ marginRight: "5em" }}
+                  // style={{ marginRight: "5em" }}
                 >
                   Add recipes
                 </Link>
@@ -50,10 +50,14 @@ function NavbarHome() {
 
               <div
                 className="logout"
-                style={{ display: "flex", alignItems: "center" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
                 <Link className="nav-link" to="/profile">
-                  <i class="bi bi-person-fill" style={{ fontSize: 52 }}></i>
+                  <i className="bi bi-person-fill" style={{ fontSize: 52 }}></i>
                 </Link>
                 <Link className="nav-link" to="/login">
                   <button

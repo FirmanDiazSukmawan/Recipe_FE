@@ -53,6 +53,7 @@ function ModalUpdate(item) {
       toast.success("input recipe successfully");
     } catch (error) {
       console.log("Error update recipe:", error);
+      toast.error("Error updating recipe:", error);
     }
   };
   return (

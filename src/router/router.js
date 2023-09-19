@@ -8,6 +8,7 @@ import AddRecipe from "../view/addRecipe/addRecipe";
 import Profile from "../view/profile/profile";
 import DetailRecipe from "../view/detailRecipe/detailRecipe";
 import ScrollToTop from "../Component/scroll/Scroll";
+import Search from "../Component/search/search";
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
           <Route path="detailVideo/:recipes_id" element={<DetailVideo />} />
           <Route path="addRecipe" element={<AddRecipe />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="search" element={<Search />} />
         </Route>
       </Routes>
     </BrowserRouter>

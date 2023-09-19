@@ -13,18 +13,23 @@ html > * {
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
+  margin-bottom: 5em;
+    margin-top: 1em;
 }
-/* style navbar */
-#navbar .navbar {
-  color: #2e266f;
-  text-align: center;
-  font-family: Airbnb Cereal App;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-decoration: none;
+
+@media screen and (min-width: 1000px) {
+
+  #navbarHome .navhome{
+    margin-right: 5em;
+  }
+  #navbarHome .navadd{
+    margin-right: 5em;
+  }
 }
+
+
+
+
 
 /* style Footer */
 
@@ -431,6 +436,8 @@ html > * {
   text-transform: capitalize;
 }
 
+
+
 #Home img.first {
   width: 830px;
   height: 830px;
@@ -574,6 +581,7 @@ html > * {
     text-transform: capitalize;
   }
   
+
   #Home img.first {
     width: 530px;
     height: 530px;
@@ -648,15 +656,6 @@ html > * {
 
 /* style detailRecipe */
 
-#detailRecipe .navbar {
-  color: #2e266f;
-  text-align: center;
-  font-family: Airbnb Cereal App;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
 #detailRecipe h1 {
   color: #2e266f;
   font-family: Airbnb Cereal App;
@@ -816,15 +815,7 @@ html > * {
 
 /* Style Detail Video */
 
-#detailVideo .navbar {
-  color: #2e266f;
-  text-align: center;
-  font-family: Airbnb Cereal App;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
+
 
 #detailVideo .navbir {
   margin-left: 5em;
